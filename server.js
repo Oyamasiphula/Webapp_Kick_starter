@@ -17,7 +17,8 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 // middleware above
 
 // <requests> now lets get ready for requests
-app.get("/ExpectedUrl", declaredRouteVarName.functionNameCb)
+app.get("/", products.home)
+app.get("/about", products.about)
 // </requests>
 
 // <portSetup>port delcaration
