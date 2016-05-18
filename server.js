@@ -1,6 +1,6 @@
 var express = require('express'),
- 	hpbs= require('express-handlebars'),
-	products = require('./routes/...');
+ 	exphbs = require('express-handlebars');
+	// products = require('./routes/products');
 
 var app = express();
 
@@ -17,10 +17,14 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 // middleware above
 
 // <requests> now lets get ready for requests
-app.get("/", products.home)
-app.get("/about", products.about)
-// </requests>
+// app.get("/", products.home)
+app.get('/', function(req, res){
+	res.render('home');
+})
+app.get('about',function(req,res){
+  res.render('about');
 
+})
 // <portSetup>port delcaration
 var port = process.env.port || 2000
 // </portSetup>
@@ -28,5 +32,5 @@ var port = process.env.port || 2000
 // <serveCodeBlocksRun>Lets configure our localhost server's port
 app.listen(port,function(){
 console.log('app is listening on' + port);
-}
+});
 // </serveCodeBlocksRun>
